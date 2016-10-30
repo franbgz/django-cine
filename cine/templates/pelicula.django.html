@@ -1,0 +1,48 @@
+{% extends "plantilla.django.html" %}
+
+{% block title %}VIP CINE - {{pelicula.titulo}} {% endblock%}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 columna-centrada cuerpo">
+			<a href="{% url 'index' %}"><button class="btn-volver"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</button></a>
+			<h2 class="titulo">{{pelicula.titulo}}</h2>
+			<img src="/media/{{pelicula.cartel}}" alt="{{pelicula.titulo}}" height="250px" style="float: left; margin-right: 15px; margin-bottom: 10px;">
+			<table class="ultimo-estreno" cellspacing="10">
+				<tr>
+					<td>Fecha estreno</td>
+					<td>{{pelicula.fecha_estreno}}</td>
+				</tr>
+				<tr>
+					<td>Desarrolladora</td>
+					<td>{{pelicula.desarrolladora}}</td>
+				</tr>
+				<tr>
+					<td>Director</td>
+					<td>{{pelicula.director}}</td>
+				</tr>
+				<tr>
+					<td>Género/s</td>
+					<td>{{pelicula.genero}}</td>
+				</tr>
+				<tr>
+					<td>Reparto</td>
+					<td>
+						{% for actor in actores %}
+					    {{actor}},
+					{% endfor %}
+					</td>
+				</tr>
+				<tr>
+				</table>
+				<div class="sinopsis">{{pelicula.sinopsis}}</div>
+				<br>
+				<div class="trailer">
+					<iframe width="560" height="315" src="{{pelicula.enlace}}" frameborder="0" allowfullscreen></iframe>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	{% endblock content %}

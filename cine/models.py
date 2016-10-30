@@ -8,14 +8,17 @@ class Actor(models.Model):
 	def __str__(self):
 		return '%s %s' % (self.nombre, self.apellidos)
 
-	def admin()	:
-		pass	
+	class Meta:
+		unique_together = ('nombre', 'apellidos',)
+
 
 class Pelicula(models.Model):
 	titulo = models.CharField(max_length=75)
 	nombre_interno = models.CharField(max_length=75)
 	fecha_estreno = models.DateField()
+	desarrolladora = models.CharField(blank=True, max_length=100)
 	genero = models.CharField(max_length=150)
+	director = models.CharField(max_length=75, null=True)
 	actores = models.ManyToManyField(Actor)
 	sinopsis = models.CharField(max_length=1000)
 	cartel = models.ImageField(upload_to='images')
@@ -24,8 +27,6 @@ class Pelicula(models.Model):
 	def __str__(self):
 		return self.titulo
 
-	def admin()	:
-		pass
 
 class Sala(models.Model):
 	numero = models.IntegerField()
@@ -35,8 +36,6 @@ class Sala(models.Model):
 	def __str__(self):
 		return str(self.numero)
 
-	def admin()	:
-		pass	
 
 class Proyeccion(models.Model):
 	sala = models.ForeignKey(Sala)
@@ -45,6 +44,3 @@ class Proyeccion(models.Model):
 
 	def __str__(self):
 		return '%s - %s (%s)' % (self.sala, self.pelicula, self.hora)
-
-	def admin()	:
-		pass	
