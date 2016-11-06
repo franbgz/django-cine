@@ -1,0 +1,66 @@
+{% extends "plantilla.django.html" %}
+
+{% block title %}{% endblock title %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 cuerpo">
+			<h2 style="margin-top: 0">Último estreno</h2>
+			<div>
+				<img src="{{media_url}}{{ult_estreno.cartel}}" alt="{{ult_estreno.nombre_interno}}" height="250px" style="float: left; margin-right: 15px; margin-bottom: 10px;">
+				<table class="ultimo-estreno" cellspacing="10">
+					<tr>
+						<td>Titulo</td>
+						<td>{{ ult_estreno.titulo }}</td>
+					</tr>
+					<tr>
+						<td>Fecha estreno</td>
+						<td>{{ ult_estreno.fecha_estreno}}</td>
+					</tr>
+					<tr>
+						<td>Desarrolladora</td>
+						<td>{{ ult_estreno.desarrolladora }}</td>
+					</tr>
+					<tr>
+						<td>Género/s</td>
+						<td>{{ ult_estreno.genero }}</td>
+					</tr>
+					<tr>
+						<td>Reparto</td>
+						<td>
+						{% for actor in ult_estreno_actores %}
+						    {{actor}},
+						{% endfor %}
+						</td>
+					</tr>
+				</table>
+				<hr>
+				<div class="sinopsis">{{ ult_estreno.sinopsis }}</div>
+			</div>
+		</div>
+
+		<div class="col-md-4 cartelera">
+			<div class="acordeon-cartelera">
+			{% for sala in salas %}
+				<h3>X</h3>
+				<div>
+					<table class="table table-hover">
+						<tr class="active">
+							<th>Pelicula</th>
+							<th>Hora</th>
+						</tr>
+						{% for proyeccion in sala %}
+						<tr>
+							<td><a href="{% url 'pelicula' proyeccion.pelicula.nombre_interno %}">{{ proyeccion.pelicula.titulo }}</a></td>
+							<td>{{ proyeccion.hora.hour }}:{{ proyeccion.hora.minute }} </td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			{% endfor %}
+
+			</div>
+
+		</div>
+	</div>
+	{% endblock content %}

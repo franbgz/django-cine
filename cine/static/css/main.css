@@ -1,5 +1,5 @@
 *{
-	font-family: Ubuntu; 
+	font-family: Ubuntu;
 }
 
 body{
@@ -8,10 +8,14 @@ body{
 }
 
 /* GENERAL */
+.navbar-brand{
+	padding: 2px 2px !important;
+}
 
 .logo{
 	height: 100%;
 }
+
 .centrado{
 	margin:0 auto;
 }
@@ -43,8 +47,8 @@ body{
 }
 
 .sinopsis{
-	width: 100%; 
-	clear: both; 
+	width: 100%;
+	clear: both;
 	margin-top: 10px;
 	text-align: justify;
 }
@@ -80,4 +84,24 @@ body{
 .trailer{
 	display: table;
     margin: auto;
+}
+
+/* Resultado */
+
+.tabla-resultado{
+	width: 80%;
+	margin: 0 auto;
+}
+
+.btn-detalles{
+	width: 100%;
+}
+
+.tabla-resultado tr td {
+	vertical-align: middle !important;
+}
+
+.coincidencia{
+	text-align: center;
+	margin-top: 5%;
 }

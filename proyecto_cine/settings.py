@@ -25,7 +25,9 @@ SECRET_KEY = '!e+swzo+4s9rimuyh^#gx24zu$9*3mytpofphl=0@*_(b@zl_o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost'
+]
 
 
 # Application definition
@@ -131,3 +133,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = BASE_DIR+'/media'
 MEDIA_URL = '/media/'
+URL_PELIS = 'pelicula/'

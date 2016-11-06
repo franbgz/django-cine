@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-	url(r'^index/$', views.index, name='index'),
-	url(r'^pelicula/(.*)/$', views.pelicula),
-	# url(r'^search/$', views.search, name='buscar')
-	]
+	url(r'^$', views.index, name='index'),
+	url(r'^'+settings.URL_PELIS+'([a-z0-9_]*)/$', views.pelicula, name='pelicula'),
+	url(r'^buscar/$', views.buscar, name='buscar')
+
+	] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

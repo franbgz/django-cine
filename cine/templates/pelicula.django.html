@@ -5,9 +5,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 columna-centrada cuerpo">
-			<a href="{% url 'index' %}"><button class="btn-volver"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Volver</button></a>
+			<a href="{% url 'index' %}"><button class="btn-volver"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</button></a>
 			<h2 class="titulo">{{pelicula.titulo}}</h2>
-			<img src="/media/{{pelicula.cartel}}" alt="{{pelicula.titulo}}" height="250px" style="float: left; margin-right: 15px; margin-bottom: 10px;">
+			<img src="{{media_url}}{{pelicula.cartel}}" alt="{{pelicula.titulo}}" height="250px" style="float: left; margin-right: 15px; margin-bottom: 10px;">
 			<table class="ultimo-estreno" cellspacing="10">
 				<tr>
 					<td>Fecha estreno</td>

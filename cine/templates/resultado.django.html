@@ -1,0 +1,49 @@
+{% extends "plantilla.django.html" %}
+
+{% block title %}VIP CINE - Resultado: {{ clave }}{% endblock%}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 columna-centrada cuerpo">
+			<form action="." method="get" role="search">
+				<table>
+					<tr>
+						<td>
+							<input type="text" class="form-control" placeholder="Buscar película" name="clave" min="5" value="{{ clave }}">
+						</td>
+						<td style="padding-left: 3px;">
+							<button type="submit" class="btn btn-default btn-buscar"><span class="glyphicon glyphicon-search"></span></button>
+						</td>
+					</tr>
+				</table>
+
+
+			</form>
+			{% if clave %}
+				{% if resultado %}
+				<h4>Coincidencias con <strong> "{{ clave }}"</strong></h4>
+				<table class="table tabla-resultado">
+					{% for peli in resultado %}
+					<tr>
+						<td>
+							<img src="{{ media_url }}{{ peli.cartel }}" alt="{{ peli.titulo }}" height="60px"/>
+						</td>
+						<td>
+							{{ peli.titulo }}
+						</td>
+						<td>
+							<a href="{% url 'pelicula' peli.nombre_interno%}"><button name="button" class="btn btn-success btn-detalles">Detalles</button></a>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+				{% else %}
+				<h3 class="coincidencia">Ninguna coincidencia con "{{ clave }}"</h3>
+				{% endif %}
+				{% else %}
+					<h3>Introduce una palabra para realizar una busqueda</h3>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock content %}
