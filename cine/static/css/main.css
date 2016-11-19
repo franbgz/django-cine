@@ -44,6 +44,7 @@ body{
 }
 
 .cartelera{
+	margin-bottom: 15px;
 }
 
 .sinopsis{
@@ -89,7 +90,7 @@ body{
 /* Resultado */
 
 .tabla-resultado{
-	width: 80%;
+	width: 95%;
 	margin: 0 auto;
 }
 

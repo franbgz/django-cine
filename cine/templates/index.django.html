@@ -7,6 +7,7 @@
 		<div class="col-md-8 cuerpo">
 			<h2 style="margin-top: 0">Último estreno</h2>
 			<div>
+
 				<img src="{{media_url}}{{ult_estreno.cartel}}" alt="{{ult_estreno.nombre_interno}}" height="250px" style="float: left; margin-right: 15px; margin-bottom: 10px;">
 				<table class="ultimo-estreno" cellspacing="10">
 					<tr>
@@ -36,13 +37,17 @@
 				</table>
 				<hr>
 				<div class="sinopsis">{{ ult_estreno.sinopsis }}</div>
+				<div style="text-align: right">
+					<a href="{% url 'pelicula' ult_estreno.nombre_interno %}"><button class="btn btn-success">Más detalles</button></a>
+				</div>
+
 			</div>
 		</div>
 
 		<div class="col-md-4 cartelera">
 			<div class="acordeon-cartelera">
 			{% for sala in salas %}
-				<h3>X</h3>
+				<h3>SALA <strong>{{ sala.0.sala }}</strong></h3>
 				<div>
 					<table class="table table-hover">
 						<tr class="active">
@@ -52,7 +57,7 @@
 						{% for proyeccion in sala %}
 						<tr>
 							<td><a href="{% url 'pelicula' proyeccion.pelicula.nombre_interno %}">{{ proyeccion.pelicula.titulo }}</a></td>
-							<td>{{ proyeccion.hora.hour }}:{{ proyeccion.hora.minute }} </td>
+							<td>{{ proyeccion.hora }}</td>
 						</tr>
 						{% endfor %}
 					</table>
@@ -63,4 +68,31 @@
 
 		</div>
 	</div>
-	{% endblock content %}
+	<div class="row">
+		<div class="col-md-8 cuerpo">
+
+			<h2 style="margin-top: 0">Próximo estreno</h2>
+
+			<div>
+				<img src="{{media_url}}{{prox_estreno.cartel}}" alt="{{prox_estreno.nombre_interno}}" height="250px" style="float: left; margin-right: 15px; margin-bottom: 10px;">
+				<table class="ultimo-estreno" cellspacing="10">
+					<tr>
+						<td>Titulo</td>
+						<td>{{ prox_estreno.titulo }}</td>
+					</tr>
+					<tr>
+						<td>Fecha estreno</td>
+						<td>{{ prox_estreno.fecha_estreno}}</td>
+					</tr>
+				</table>
+				<hr>
+				<div>{{ prox_estreno.sinopsis }}</div>
+				<div style="text-align: right">
+					<a href="{% url 'pelicula' prox_estreno.nombre_interno %}"><button class="btn btn-success">Más detalles</button></a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+{% endblock content %}

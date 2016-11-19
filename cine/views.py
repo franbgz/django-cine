@@ -48,6 +48,18 @@ def pelicula(request, offset):
     media_url = settings.MEDIA_URL
     return render_to_response('pelicula.django.html', locals())
 
+def listaPeliculas(request):
+    hoy = date.today()
+    peliculas = Pelicula.objects.filter(fecha_estreno__lte=hoy).order_by('-fecha_estreno')
+    media_url = settings.MEDIA_URL
+    return render_to_response('lista.django.html', locals())
+
+def listaProximas(request):
+    hoy = date.today()
+    peliculas = Pelicula.objects.filter(fecha_estreno__gt=hoy).order_by('fecha_estreno')
+    media_url = settings.MEDIA_URL
+    return render_to_response('proximas.django.html', locals())
+
 def buscar(request):
     clave = request.GET.get('clave', '')
     if clave:

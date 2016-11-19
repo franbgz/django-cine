@@ -13,10 +13,12 @@
 
 
 -- Volcando estructura de base de datos para django-cine
+DROP DATABASE IF EXISTS `django-cine`;
 CREATE DATABASE IF NOT EXISTS `django-cine` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `django-cine`;
 
 -- Volcando estructura para tabla django-cine.auth_group
+DROP TABLE IF EXISTS `auth_group`;
 CREATE TABLE IF NOT EXISTS `auth_group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) NOT NULL,
@@ -30,6 +32,7 @@ DELETE FROM `auth_group`;
 /*!40000 ALTER TABLE `auth_group` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.auth_group_permissions
+DROP TABLE IF EXISTS `auth_group_permissions`;
 CREATE TABLE IF NOT EXISTS `auth_group_permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL,
@@ -47,6 +50,7 @@ DELETE FROM `auth_group_permissions`;
 /*!40000 ALTER TABLE `auth_group_permissions` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.auth_permission
+DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE IF NOT EXISTS `auth_permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -94,6 +98,7 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.auth_user
+DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE IF NOT EXISTS `auth_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `password` varchar(128) NOT NULL,
@@ -114,10 +119,11 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
 DELETE FROM `auth_user`;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-	(1, 'pbkdf2_sha256$30000$vnqtBkZC9lnd$57+kEm0cTjczQA8EdtD+ooZW9QHPSqw7Dq+QjbX+eJs=', '2016-11-05 17:53:49.912858', 1, 'admin', '', '', '', 1, 1, '2016-10-30 12:19:51.727309');
+	(1, 'pbkdf2_sha256$30000$vnqtBkZC9lnd$57+kEm0cTjczQA8EdtD+ooZW9QHPSqw7Dq+QjbX+eJs=', '2016-11-06 14:21:39.359316', 1, 'admin', '', '', '', 1, 1, '2016-10-30 12:19:51.727309');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.auth_user_groups
+DROP TABLE IF EXISTS `auth_user_groups`;
 CREATE TABLE IF NOT EXISTS `auth_user_groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -135,6 +141,7 @@ DELETE FROM `auth_user_groups`;
 /*!40000 ALTER TABLE `auth_user_groups` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.auth_user_user_permissions
+DROP TABLE IF EXISTS `auth_user_user_permissions`;
 CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -152,6 +159,7 @@ DELETE FROM `auth_user_user_permissions`;
 /*!40000 ALTER TABLE `auth_user_user_permissions` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.cine_actor
+DROP TABLE IF EXISTS `cine_actor`;
 CREATE TABLE IF NOT EXISTS `cine_actor` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
@@ -160,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `cine_actor` (
   UNIQUE KEY `cine_actor_nombre_13c3784f_uniq` (`nombre`,`apellidos`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla django-cine.cine_actor: ~31 rows (aproximadamente)
+-- Volcando datos para la tabla django-cine.cine_actor: ~30 rows (aproximadamente)
 DELETE FROM `cine_actor`;
 /*!40000 ALTER TABLE `cine_actor` DISABLE KEYS */;
 INSERT INTO `cine_actor` (`id`, `nombre`, `apellidos`) VALUES
@@ -198,6 +206,7 @@ INSERT INTO `cine_actor` (`id`, `nombre`, `apellidos`) VALUES
 /*!40000 ALTER TABLE `cine_actor` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.cine_pelicula
+DROP TABLE IF EXISTS `cine_pelicula`;
 CREATE TABLE IF NOT EXISTS `cine_pelicula` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(75) NOT NULL,
@@ -212,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `cine_pelicula` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla django-cine.cine_pelicula: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla django-cine.cine_pelicula: ~5 rows (aproximadamente)
 DELETE FROM `cine_pelicula`;
 /*!40000 ALTER TABLE `cine_pelicula` DISABLE KEYS */;
 INSERT INTO `cine_pelicula` (`id`, `titulo`, `nombre_interno`, `fecha_estreno`, `genero`, `sinopsis`, `cartel`, `enlace`, `director`, `desarrolladora`) VALUES
@@ -225,6 +234,7 @@ INSERT INTO `cine_pelicula` (`id`, `titulo`, `nombre_interno`, `fecha_estreno`, 
 /*!40000 ALTER TABLE `cine_pelicula` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.cine_pelicula_actores
+DROP TABLE IF EXISTS `cine_pelicula_actores`;
 CREATE TABLE IF NOT EXISTS `cine_pelicula_actores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pelicula_id` int(11) NOT NULL,
@@ -274,6 +284,7 @@ INSERT INTO `cine_pelicula_actores` (`id`, `pelicula_id`, `actor_id`) VALUES
 /*!40000 ALTER TABLE `cine_pelicula_actores` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.cine_proyeccion
+DROP TABLE IF EXISTS `cine_proyeccion`;
 CREATE TABLE IF NOT EXISTS `cine_proyeccion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `hora` time(6) NOT NULL,
@@ -286,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `cine_proyeccion` (
   CONSTRAINT `cine_proyeccion_sala_id_b6bc4316_fk_cine_sala_id` FOREIGN KEY (`sala_id`) REFERENCES `cine_sala` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla django-cine.cine_proyeccion: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla django-cine.cine_proyeccion: ~4 rows (aproximadamente)
 DELETE FROM `cine_proyeccion`;
 /*!40000 ALTER TABLE `cine_proyeccion` DISABLE KEYS */;
 INSERT INTO `cine_proyeccion` (`id`, `hora`, `pelicula_id`, `sala_id`) VALUES
@@ -298,6 +309,7 @@ INSERT INTO `cine_proyeccion` (`id`, `hora`, `pelicula_id`, `sala_id`) VALUES
 /*!40000 ALTER TABLE `cine_proyeccion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.cine_sala
+DROP TABLE IF EXISTS `cine_sala`;
 CREATE TABLE IF NOT EXISTS `cine_sala` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `numero` int(11) NOT NULL,
@@ -306,7 +318,7 @@ CREATE TABLE IF NOT EXISTS `cine_sala` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla django-cine.cine_sala: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla django-cine.cine_sala: ~0 rows (aproximadamente)
 DELETE FROM `cine_sala`;
 /*!40000 ALTER TABLE `cine_sala` DISABLE KEYS */;
 INSERT INTO `cine_sala` (`id`, `numero`, `tipo`, `aforo_max`) VALUES
@@ -315,6 +327,7 @@ INSERT INTO `cine_sala` (`id`, `numero`, `tipo`, `aforo_max`) VALUES
 /*!40000 ALTER TABLE `cine_sala` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.django_admin_log
+DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE IF NOT EXISTS `django_admin_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `action_time` datetime(6) NOT NULL,
@@ -329,9 +342,9 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin__content_type_id_c4bce8eb_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla django-cine.django_admin_log: ~51 rows (aproximadamente)
+-- Volcando datos para la tabla django-cine.django_admin_log: ~46 rows (aproximadamente)
 DELETE FROM `django_admin_log`;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
@@ -385,10 +398,12 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 	(48, '2016-11-05 22:34:09.473352', '2', '2', 1, '[{"added": {}}]', 10, 1),
 	(49, '2016-11-05 22:34:52.486053', '4', '2 - Dr. Strange (Doctor Extraño) (18:15:00)', 1, '[{"added": {}}]', 9, 1),
 	(50, '2016-11-05 22:35:32.151618', '5', '2 - Que Dios nos perdone (20:50:00)', 1, '[{"added": {}}]', 9, 1),
-	(51, '2016-11-05 22:35:44.290406', '1', '1 - Que Dios nos perdone (18:00:00)', 2, '[{"changed": {"fields": ["hora"]}}]', 9, 1);
+	(51, '2016-11-05 22:35:44.290406', '1', '1 - Que Dios nos perdone (18:00:00)', 2, '[{"changed": {"fields": ["hora"]}}]', 9, 1),
+	(52, '2016-11-06 15:10:51.603652', '1', '1 - Que Dios nos perdone (18:00:00)', 2, '[]', 9, 1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.django_content_type
+DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE IF NOT EXISTS `django_content_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `app_label` varchar(100) NOT NULL,
@@ -414,6 +429,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.django_migrations
+DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE IF NOT EXISTS `django_migrations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `app` varchar(255) NOT NULL,
@@ -446,6 +462,7 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 
 -- Volcando estructura para tabla django-cine.django_session
+DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE IF NOT EXISTS `django_session` (
   `session_key` varchar(40) NOT NULL,
   `session_data` longtext NOT NULL,
@@ -454,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `django_session` (
   KEY `django_session_de54fa62` (`expire_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla django-cine.django_session: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla django-cine.django_session: ~4 rows (aproximadamente)
 DELETE FROM `django_session`;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES

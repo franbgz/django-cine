@@ -1,0 +1,28 @@
+{% extends "plantilla.django.html" %}
+
+{% block title %}VIP CINE - Lista de películas{% endblock%}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 columna-centrada cuerpo">
+			<a href="{% url 'index' %}"><button class="btn-volver"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</button></a>
+			<h3 class="titulo" style="text-align: center">Lista de películas</h3>
+			<table class="table tabla-resultado">
+					{% for peli in peliculas %}
+					<tr>
+						<td>
+							<img src="{{ media_url }}{{ peli.cartel }}" alt="{{ peli.titulo }}" height="60px"/>
+						</td>
+						<td>
+							{{ peli.titulo }}
+						</td>
+						<td>
+							<a href="{% url 'pelicula' peli.nombre_interno%}"><button name="button" class="btn btn-success btn-detalles">Detalles</button></a>
+						</td>
+					</tr>
+					{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}
