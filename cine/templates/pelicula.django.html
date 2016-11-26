@@ -29,8 +29,12 @@
 					<td>Reparto</td>
 					<td>
 						{% for actor in actores %}
-					    {{actor}},
-					{% endfor %}
+							{% if forloop.last %}
+								{{actor}}
+							{% else %}
+								{{actor}},
+							{% endif %}
+						{% endfor %}
 					</td>
 				</tr>
 				<tr>

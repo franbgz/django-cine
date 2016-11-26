@@ -9,6 +9,12 @@ class SinopsisForm(forms.ModelForm):
 class PeliculaAdmin(admin.ModelAdmin):
     filter_horizontal = ('actores',)
     form = SinopsisForm
+
+    class Media:
+        js = (
+            'js/admin-mod.js',
+        )
+
 # Register your models here.
 admin.site.register(Pelicula, PeliculaAdmin)
 admin.site.register(Actor)

@@ -30,7 +30,12 @@
 						<td>Reparto</td>
 						<td>
 						{% for actor in ult_estreno_actores %}
-						    {{actor}},
+							{% if forloop.last %}
+							{{actor}}
+							{% else %}
+							{{actor}},
+							{% endif %}
+
 						{% endfor %}
 						</td>
 					</tr>
@@ -51,7 +56,7 @@
 				<div>
 					<table class="table table-hover">
 						<tr class="active">
-							<th>Pelicula</th>
+							<th>Película</th>
 							<th>Hora</th>
 						</tr>
 						{% for proyeccion in sala %}
