@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.template.loader import get_template
 from django.template import Context
-from datetime import date
+from datetime import date, time
 
 from .models import *
 # Create your views here.

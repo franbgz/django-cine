@@ -1,6 +1,6 @@
 {% extends "plantilla.django.html" %}
 
-{% block title %}{% endblock title %}
+{% block title %}VIP Cines - Inicio{% endblock title %}
 {% block content %}
 <div class="container">
 	<div class="row">
@@ -52,7 +52,12 @@
 		<div class="col-md-4 cartelera">
 			<div class="acordeon-cartelera">
 			{% for sala in salas %}
-				<h3>SALA <strong>{{ sala.0.sala }}</strong></h3>
+				<h3>
+					SALA <strong>{{ sala.0.sala }}</strong>
+					{% if forloop.first %}
+					<span id="hora_actual" class="pull-right"></span>
+					{% endif %}
+				</h3>
 				<div>
 					<table class="table table-hover">
 						<tr class="active">
